@@ -1,4 +1,4 @@
-package z_universal.util;
+package org.sa.util;
 
 import java.io.*;
 import java.util.HashMap;

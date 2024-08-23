@@ -1,4 +1,4 @@
-package z_universal.util;
+package org.sa.util;
 
 import java.math.BigInteger;
 import java.util.*;
