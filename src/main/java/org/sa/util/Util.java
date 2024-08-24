@@ -3,6 +3,7 @@ package org.sa.util;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Util {
 
@@ -118,5 +119,12 @@ public class Util {
         .filter(c -> !Character.isWhitespace(c))
         .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
         .toString();
+  }
+
+  public static <T> List<T> concatListsAndUnique(List<T>... lists) {
+    return Stream.of(lists)
+        .flatMap(Collection::stream)
+        .distinct()
+        .collect(Collectors.toList());
   }
 }

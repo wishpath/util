@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class FileUtil {
   public static BufferedReader getReader(String filePath) {
@@ -113,5 +114,23 @@ public class FileUtil {
     } catch (IOException e) {
       System.err.println("Error appending to file: " + e.getMessage());
     }
+  }
+
+
+  public static boolean isValidFileName(String filename) {
+    String validFilenameMatchRegex = "^[^<>:\"/\\\\|?*]+$";
+    return filename != null && filename.matches(validFilenameMatchRegex);
+  }
+
+
+  public static List<String> listFilepaths(String directory) {
+    List<String> filepaths = new ArrayList<>();
+    File[] files = listFiles(directory);
+    for (File f : files) if(!f.isDirectory()) filepaths.add(directory + f.getName());
+    return filepaths;
+  }
+
+  public static Stream<String> readFileAsStreamOfLines(String filepath) {
+    return readFileAsListOfLines(filepath).stream();
   }
 }
