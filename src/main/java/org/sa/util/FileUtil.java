@@ -112,7 +112,8 @@ public class FileUtil {
     try {
       Files.writeString(path, line + System.lineSeparator(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     } catch (IOException e) {
-      System.err.println("Error appending to file: " + e.getMessage());
+      System.err.println("ERROR APPENDING TO FILE: " + e.getMessage());
+      System.err.println("PARENT DIRECTORY EXISTENCE: " + path.getParent() + ": " + Files.exists(path.getParent()));
     }
   }
 
@@ -126,6 +127,7 @@ public class FileUtil {
   public static List<String> listFilepaths(String directory) {
     List<String> filepaths = new ArrayList<>();
     File[] files = listFiles(directory);
+    if (files == null) return new ArrayList<>();
     for (File f : files) if(!f.isDirectory()) filepaths.add(directory + f.getName());
     return filepaths;
   }
