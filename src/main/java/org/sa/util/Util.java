@@ -127,4 +127,20 @@ public class Util {
         .distinct()
         .collect(Collectors.toList());
   }
+
+  public static String capitaliseEachLine(String multiLineString) {
+    String[] lines = multiLineString.split("\n");
+    StringBuilder capitalised = new StringBuilder();
+    for (int i = 0; i < lines.length; i++) capitalised.append(capitaliseFirstLetter(lines[i]));
+    return capitalised.toString();
+  }
+
+  private static String capitaliseFirstLetter(String line) {
+    String[] symbols = line.split("");
+    for (int i = 0; i < symbols.length; i++) {
+      if (symbols[i].matches("[a-zA-Z0-9]")) symbols[i] = symbols[i].toUpperCase();
+      return Arrays.stream(symbols).collect(Collectors.joining());
+    }
+    return Arrays.stream(symbols).collect(Collectors.joining());
+  }
 }
