@@ -143,4 +143,15 @@ public class Util {
     }
     return Arrays.stream(symbols).collect(Collectors.joining());
   }
+
+  public static int getMaxLength(String[] arr) {
+    return Arrays.stream(arr)
+        .mapToInt(String::length)
+        .max()
+        .orElse(0); //if array is empty
+  }
+
+  public static String repeatedString(int times, String s) {
+    return s.repeat(Math.max(0, times)); //math max ensures, times is not negative
+  }
 }
