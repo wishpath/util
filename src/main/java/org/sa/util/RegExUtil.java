@@ -5,6 +5,7 @@ public class RegExUtil {
   public static final String NON_LETTER = "[^a-zA-Z]";
   public static final String ALPHANUMERIC = "\\w";  // [a-zA-Z0-9_]
   public static final String NON_ALPHANUMERIC = "\\W";  // [^a-zA-Z0-9_]
+  public static final String ANSI_ESCAPE_CODE = "\\u001B\\[[;\\d]*m";  // ANSI escape codes (like colors)
 
 
   public static final String OR = "|";
